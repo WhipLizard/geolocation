@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>prac</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<style>
+*{box-sizing:border-box;
+}
+body{
+margin:10px;
+background:linear-gradient(90deg,cyan,white,yellow);
+align-items:center;
+}
+p{
+text-align:center;
+font-weight:bold;
+font-family:audiowide;
+font-size:19px;}
+button{
+width:100px;
+height:30px;
+background-color:lime;
+color:black;
+font-weight:bold;
+box-shadow:0 10px 8px rgba(0,0,0,0.3);
+border-radius:10px;
+margin-left:45%;}
+button:hover{
+background:purple;
+color:white;
+font-size:12px;
+transition:.5s;}
+</style>
+</head>
+<body>
+<p>Click the button to get the location</p>
+<button onclick="getLocation()">Try it</button>
+<p id="demo"></p>
+<script>
+const myinterval=setInterval(getLocation,1000);
+const x=document.getElementById("demo");
+function getLocation(){
+if(navigator.geolocation){
+navigator.geolocation.watchPosition(showPosition);
+}
+else{
+x.innerHTML="Geolocation is not supported";}}
+
+function showPosition(position){
+x.innerHTML="Latitude: "+position.coords.latitude+"<br>Longitude: "+position.coords.longitude;}
+</script>
+</body>
+</html>
